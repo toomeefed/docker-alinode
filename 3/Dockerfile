@@ -23,7 +23,7 @@ RUN source $HOME/.bashrc \
 && tnvm use "alinode-v$ALINODE_VERSION" \
 && npm set registry https://registry.npm.taobao.org \
 && npm i -g yarn \
-&& yarn global add @alicloud/agenthub pm2
+&& yarn global add pm2 @alicloud/agenthub
 
 # add node and npm to path so the commands are available
 ENV NODE_PATH $TNVM_DIR/versions/alinode/v$ALINODE_VERSION/lib/node_modules
@@ -31,18 +31,22 @@ ENV PATH      $TNVM_DIR/versions/alinode/v$ALINODE_VERSION/bin:$PATH
 
 # Expose ports
 EXPOSE 8000
+ENV PORT 8000
 
 # Work dir
 ENV APP_DIR /app
 VOLUME ["/app"]
 WORKDIR /app
 
-# Config
+# alinode config
 COPY default.config.js $HOME
 COPY docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["docker-entrypoint.sh"]
 
+# Application environment variable
 ENV NODE_LOG_DIR /tmp
 ENV ENABLE_NODE_LOG YES
+ENV ALINODE_CONFIG alinode.config.json
+ENV NODE_ENV production
 
 CMD ["pm2-runtime", "start", "--env", "production", "ecosystem.config.js"]
