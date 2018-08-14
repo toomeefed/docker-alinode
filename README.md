@@ -5,7 +5,10 @@ Node.js 性能平台 - Node.js Performance Platform
 > 集成 alinode + yarn + pm2 + agenthub  
 > 自动启动 agenthub 服务，让你可以像 pm2 镜像一样方便使用。  
 
-
+[GitHub](https://github.com/toomeefed/docker-alinode)
+|
+[Docker Store](https://store.docker.com/community/images/toomee/alinode)
+|
 [《Node.js性能平台运行时版本和官方对应列表》](https://help.aliyun.com/knowledge_detail/60811.html)
 
 ## 标签对应关系
@@ -95,3 +98,41 @@ $ docker run -d \
 `$ docker exec my-alinode pm2 reload all` | 无缝重启所有进程
 
 **PS: 具体使用说明看 PM2 和 alinode 文档**
+
+
+## 高级应用
+
+多环境基于配置部署方案：
+
+添加 `alinode.config.json` `alinode.config.pre.json` 到根目录。
+
+启动 pre 环境容器：
+
+```sh
+$ docker run -d \
+  -p 8000:8000 \
+  -v $(pwd):/app \
+  -e "ALINODE_CONFIG=alinode.config.pre.json" \
+  -h my-alinode \
+  --name my-alinode \
+  tm/alinode:3
+```
+
+启动 正式 环境容器：
+
+```sh
+$ docker run -d \
+  -p 8000:8000 \
+  -v $(pwd):/app \
+  -h my-alinode \
+  --name my-alinode \
+  tm/alinode:3
+```
+
+如果不想要 8000 端口，建议自己修改 Dockerfile 然后编译。
+
+## 特别说明
+
+`-h my-alinode` 是容器 hostname 最终会显示在 <https://node.console.aliyun.com/> 平台实例列表中。
+如果不写，会显示默认容器名，也就是随机值。
+
