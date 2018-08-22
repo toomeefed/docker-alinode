@@ -12,8 +12,8 @@ RUN wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Cen
 
 ENV HOME /root
 
-# Install alinode v3.11.5 (node v8.11.3)
-ENV ALINODE_VERSION 3.11.5
+# Install alinode v3.11.7 (node v8.11.4)
+ENV ALINODE_VERSION 3.11.7
 ENV TNVM_DIR /root/.tnvm
 
 RUN wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh | bash
@@ -29,18 +29,14 @@ RUN source $HOME/.bashrc \
 ENV NODE_PATH $TNVM_DIR/versions/alinode/v$ALINODE_VERSION/lib/node_modules
 ENV PATH      $TNVM_DIR/versions/alinode/v$ALINODE_VERSION/bin:$PATH
 
-# Expose ports
-EXPOSE 8000
-ENV PORT 8000
-
 # Work dir
 ENV APP_DIR /app
-VOLUME ["/app"]
 WORKDIR /app
 
 # alinode config
 COPY default.config.js $HOME
 COPY docker-entrypoint.sh /usr/local/bin/
+
 ENTRYPOINT ["docker-entrypoint.sh"]
 
 # Application environment variable
@@ -49,4 +45,4 @@ ENV ENABLE_NODE_LOG YES
 ENV ALINODE_CONFIG alinode.config.json
 ENV NODE_ENV production
 
-CMD ["pm2-runtime", "start", "--env", "production", "ecosystem.config.js"]
+CMD ["pm2-runtime", "start", "ecosystem.config.js"]
