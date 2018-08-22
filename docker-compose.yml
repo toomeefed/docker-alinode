@@ -1,0 +1,19 @@
+web:
+  image: toomee/alinode:3
+  restart: always
+  hostname: my-alinode
+  container_name: my-alinode
+  environment:
+    APP_ID: 应用ID
+    APP_SECRET: 应用密钥
+    # 或者使用自定义环境配置
+    # ALINODE_CONFIG: alinode.config.pre.json
+  ports:
+    - 8000:8000
+  volumes:
+    - '$PWD:/app'
+
+# docker-compose pull    # 更新/拉取镜像
+# docker-compose up -d   # 创建并启动
+# docker-compose restart # 重启容器
+# docker-compose down    # 关闭并删除
