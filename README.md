@@ -44,7 +44,7 @@ $ docker pull toomee/alinode:3
 ```sh
 $ docker run -d \
   -p 8000:8000 \
-  -v $(pwd):/app \
+  -v $PWD:/app \
   -e "APP_ID=应用ID" \
   -e "APP_SECRET=应用密钥" \
   -h my-alinode \
@@ -82,10 +82,10 @@ $ docker run -d \
 ```sh
 $ docker run -d \
   -p 8000:8000 \
-  -v $(pwd):/app \
+  -v $PWD:/app \
   -h my-alinode \
   --name my-alinode \
-  tm/alinode:3
+  toomee/alinode:3
 ```
 
 ### 常用命令
@@ -111,11 +111,11 @@ $ docker run -d \
 ```sh
 $ docker run -d \
   -p 8000:8000 \
-  -v $(pwd):/app \
+  -v $PWD:/app \
   -e "ALINODE_CONFIG=alinode.config.pre.json" \
   -h my-alinode \
   --name my-alinode \
-  tm/alinode:3
+  toomee/alinode:3
 ```
 
 启动 正式 环境容器：
@@ -123,13 +123,41 @@ $ docker run -d \
 ```sh
 $ docker run -d \
   -p 8000:8000 \
-  -v $(pwd):/app \
+  -v $PWD:/app \
   -h my-alinode \
   --name my-alinode \
-  tm/alinode:3
+  toomee/alinode:3
 ```
 
-如果不想要 8000 端口，建议自己修改 Dockerfile 然后编译。
+## docker-compose
+
+也可以使用 docker-compose.yml 启动。
+
+```yml
+web:
+  image: toomee/alinode:3
+  restart: always
+  hostname: my-alinode
+  container_name: my-alinode
+  environment:
+    APP_ID: 应用ID
+    APP_SECRET: 应用密钥
+    # 或者使用自定义环境配置
+    # ALINODE_CONFIG: alinode.config.pre.json
+  ports:
+    - 8000:8000
+  volumes:
+    - '$PWD:/app'
+```
+
+常用命令
+
+```sh
+$ docker-compose pull    # 更新/拉取镜像
+$ docker-compose up -d   # 创建并启动
+$ docker-compose restart # 重启容器
+$ docker-compose down    # 关闭并删除
+```
 
 ## 特别说明
 
