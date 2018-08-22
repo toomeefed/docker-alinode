@@ -15,7 +15,7 @@ Node.js 性能平台 - Node.js Performance Platform
 
 Image Name | Operating system | Node | Dockerfile
 :-- | :-- | :-- | :--
-toomee/alinode:3 | Centos7 | v8.1.4 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3/Dockerfile)
+toomee/alinode:3 | Centos7 | v8.11.4 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3/Dockerfile)
 
 ## 使用说明
 
