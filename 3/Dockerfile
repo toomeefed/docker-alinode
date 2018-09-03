@@ -12,8 +12,8 @@ RUN wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Cen
 
 ENV HOME /root
 
-# Install alinode v3.11.7 (node v8.11.4)
-ENV ALINODE_VERSION 3.11.7
+# Install alinode v3.11.8 (node v8.11.4)
+ENV ALINODE_VERSION 3.11.8
 ENV TNVM_DIR /root/.tnvm
 
 RUN wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh | bash
