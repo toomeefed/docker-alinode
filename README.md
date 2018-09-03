@@ -13,7 +13,7 @@ Node.js 性能平台 - Node.js Performance Platform
 
 ## 标签对应关系
 
-镜像 | 镜像大小 | 基础镜像 | AliNode | Node | Dockerfile
+镜像 | 镜像大小 | 基础镜像 | AliNode | Node | Dockerfile
 :-- | :-- | :-- | :-- | :-- | :--
 toomee/alinode:3 | 410MB | centos:7 | v3.11.8 | v8.11.4 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3/Dockerfile)
 toomee/alinode:3-slim | 161MB | debian:8-slim | v3.11.8 | v8.11.4 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3-slim/Dockerfile) [推荐]
