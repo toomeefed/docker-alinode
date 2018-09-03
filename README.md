@@ -13,10 +13,10 @@ Node.js 性能平台 - Node.js Performance Platform
 
 ## 标签对应关系
 
-Image Name | Operating system | Node | Dockerfile
-:-- | :-- | :-- | :--
-toomee/alinode:3 | centos:7 | v8.11.4 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3/Dockerfile)
-toomee/alinode:3-slim | debian:8-slim | v8.11.4 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3-slim/Dockerfile)
+镜像 | 镜像大小 | 基础镜像 | AliNode | Node | Dockerfile
+:-- | :-- | :-- | :-- | :-- | :--
+toomee/alinode:3 | 410MB | centos:7 | v3.11.8 | v8.11.4 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3/Dockerfile)
+toomee/alinode:3-slim | 161MB | debian:8-slim | v3.11.8 | v8.11.4 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3-slim/Dockerfile) [推荐]
 
 ## 使用说明
 
@@ -34,7 +34,7 @@ toomee/alinode:3-slim | debian:8-slim | v8.11.4 | [Dockerfile](https://github.co
 ### 拉取镜像
 
 ```sh
-$ docker pull toomee/alinode:3
+$ docker pull toomee/alinode:3-slim
 ```
 
 ### 1. 直接启动
@@ -49,7 +49,7 @@ $ docker run -d \
   -e "APP_SECRET=应用密钥" \
   -h my-alinode \
   --name my-alinode \
-  toomee/alinode:3
+  toomee/alinode:3-slim
 ```
 
 ### 2. 基于配置启动
@@ -85,7 +85,7 @@ $ docker run -d \
   -v $PWD:/app \
   -h my-alinode \
   --name my-alinode \
-  toomee/alinode:3
+  toomee/alinode:3-slim
 ```
 
 ### 常用命令
@@ -104,7 +104,7 @@ $ docker run -d \
 
 多环境基于配置部署方案：
 
-添加 `alinode.config.json` `alinode.config.pre.json` 到根目录。
+添加 `alinode.config.json`, `alinode.config.pre.json` 到根目录。
 
 启动 pre 环境容器：
 
@@ -115,7 +115,7 @@ $ docker run -d \
   -e "ALINODE_CONFIG=alinode.config.pre.json" \
   -h my-alinode \
   --name my-alinode \
-  toomee/alinode:3
+  toomee/alinode:3-slim
 ```
 
 启动 正式 环境容器：
@@ -126,7 +126,7 @@ $ docker run -d \
   -v $PWD:/app \
   -h my-alinode \
   --name my-alinode \
-  toomee/alinode:3
+  toomee/alinode:3-slim
 ```
 
 ## docker-compose
@@ -135,7 +135,7 @@ $ docker run -d \
 
 ```yml
 web:
-  image: toomee/alinode:3
+  image: toomee/alinode:3-slim
   restart: always
   hostname: my-alinode
   container_name: my-alinode
@@ -147,7 +147,7 @@ web:
   ports:
     - 8000:8000
   volumes:
-    - '$PWD:/app'
+    - $PWD:/app
 ```
 
 常用命令
@@ -163,4 +163,3 @@ $ docker-compose down    # 关闭并删除
 
 `-h my-alinode` 是容器 hostname 最终会显示在 <https://node.console.aliyun.com/> 平台实例列表中。
 如果不写，会显示默认容器名，也就是随机值。
-
