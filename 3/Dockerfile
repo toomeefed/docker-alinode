@@ -1,48 +1,47 @@
-FROM centos:7
+FROM debian:8-slim
 
-USER root
+# alinode 版本和镜像
+ENV ALINODE_VERSION=3.11.8 \
+    NODE_VERSION=8.11.4 \
+    ENABLE_NODE_LOG=YES \
+    NODE_LOG_DIR=/tmp \
+    ALINODE_CONFIG=alinode.config.json \
+    NODE_ENV=production \
+    HOME=/root \
+    APP_DIR=/app
 
-# replace shell with bash so we can source files
+# 复制 alinode npm 到 bin 目录
+COPY --from=registry.cn-hangzhou.aliyuncs.com/aliyun-node/alinode /usr/local/lib /usr/local/lib
+COPY --from=registry.cn-hangzhou.aliyuncs.com/aliyun-node/alinode /usr/local/bin /usr/local/bin
+COPY --from=registry.cn-hangzhou.aliyuncs.com/aliyun-node/alinode /bin/ping /bin
+
+# 只维护一个 shell
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
-RUN yum install wget -y
-
-# Change mirrors
-RUN wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
-
-ENV HOME /root
-
-# Install alinode v3.11.8 (node v8.11.4)
-ENV ALINODE_VERSION 3.11.8
-ENV TNVM_DIR /root/.tnvm
-
-RUN wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh | bash
-
-RUN source $HOME/.bashrc \
-&& tnvm install "alinode-v$ALINODE_VERSION" \
-&& tnvm use "alinode-v$ALINODE_VERSION" \
+# 安装 curl yarn pm2
+RUN echo -e "\
+deb http://mirrors.aliyun.com/debian/ jessie main non-free contrib\n\
+deb http://mirrors.aliyun.com/debian/ jessie-proposed-updates main non-free contrib\n\
+deb-src http://mirrors.aliyun.com/debian/ jessie main non-free contrib\n\
+deb-src http://mirrors.aliyun.com/debian/ jessie-proposed-updates main non-free contrib\n\
+" > /etc/apt/sources.list \
+&& apt-get update \
+&& apt-get install -y --no-install-recommends ca-certificates curl \
+&& rm -rf /var/lib/apt/lists/* \
+&& rm -rf /usr/local/bin/yarn* \
 && npm set registry https://registry.npm.taobao.org \
-&& npm i -g yarn \
-&& yarn global add pm2 @alicloud/agenthub
+&& npm set disturl https://npm.taobao.org/dist \
+&& npm i -g yarn pm2 \
+&& npm cache clean --force
 
-# add node and npm to path so the commands are available
-ENV NODE_PATH $TNVM_DIR/versions/alinode/v$ALINODE_VERSION/lib/node_modules
-ENV PATH      $TNVM_DIR/versions/alinode/v$ALINODE_VERSION/bin:$PATH
-
-# Work dir
-ENV APP_DIR /app
-WORKDIR /app
-
-# alinode config
+# 初始化脚本
 COPY default.config.js $HOME
-COPY docker-entrypoint.sh /usr/local/bin/
+COPY docker-entrypoint.sh /usr/local/bin
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 
-# Application environment variable
-ENV NODE_LOG_DIR /tmp
-ENV ENABLE_NODE_LOG YES
-ENV ALINODE_CONFIG alinode.config.json
-ENV NODE_ENV production
+# 工作目录
+WORKDIR /app
 
+# 默认启动命令
 CMD ["pm2-runtime", "start", "ecosystem.config.js"]
