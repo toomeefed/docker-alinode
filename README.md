@@ -15,8 +15,8 @@ Node.js 性能平台 - Node.js Performance Platform
 
 镜像 | 镜像大小 | 基础镜像 | AliNode | Node | Dockerfile
 :-- | :-- | :-- | :-- | :-- | :--
-toomee/alinode:3 | 196MB | debian:8 | v3.11.8 | v8.11.4 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3/Dockerfile) [推荐]
-toomee/alinode:3 | 184MB | debian:8-slim | v3.11.8 | v8.11.4 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3/Dockerfile)
+toomee/alinode:3 | 196MB | debian:8-slim | v3.11.8 | v8.11.4 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3/Dockerfile) [推荐]
+toomee/alinode:3-slim | 184MB | debian:8-slim | v3.11.8 | v8.11.4 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3/Dockerfile)
 toomee/alinode:3-tnvm | 458MB | centos:7 | v3.11.8 | v8.11.4 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3-tnvm/Dockerfile)
 
 ## 使用说明
