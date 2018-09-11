@@ -15,8 +15,9 @@ Node.js 性能平台 - Node.js Performance Platform
 
 镜像 | 镜像大小 | 基础镜像 | AliNode | Node | Dockerfile
 :-- | :-- | :-- | :-- | :-- | :--
-toomee/alinode:3 | 410MB | centos:7 | v3.11.8 | v8.11.4 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3/Dockerfile)
-toomee/alinode:3-slim | 161MB | debian:8-slim | v3.11.8 | v8.11.4 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3-slim/Dockerfile) [推荐]
+toomee/alinode:3 | 196MB | debian:8 | v3.11.8 | v8.11.4 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3/Dockerfile) [推荐]
+toomee/alinode:3 | 184MB | debian:8-slim | v3.11.8 | v8.11.4 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3/Dockerfile)
+toomee/alinode:3-tnvm | 458MB | centos:7 | v3.11.8 | v8.11.4 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3-tnvm/Dockerfile)
 
 ## 使用说明
 
@@ -34,7 +35,7 @@ toomee/alinode:3-slim | 161MB | debian:8-slim | v3.11.8 | v8.11.4 | [Dockerfile]
 ### 拉取镜像
 
 ```sh
-$ docker pull toomee/alinode:3-slim
+$ docker pull toomee/alinode:3
 ```
 
 ### 1. 直接启动
@@ -49,7 +50,7 @@ $ docker run -d \
   -e "APP_SECRET=应用密钥" \
   -h my-alinode \
   --name my-alinode \
-  toomee/alinode:3-slim
+  toomee/alinode:3
 ```
 
 ### 2. 基于配置启动
@@ -85,7 +86,7 @@ $ docker run -d \
   -v $PWD:/app \
   -h my-alinode \
   --name my-alinode \
-  toomee/alinode:3-slim
+  toomee/alinode:3
 ```
 
 ### 常用命令
@@ -115,7 +116,7 @@ $ docker run -d \
   -e "ALINODE_CONFIG=alinode.config.pre.json" \
   -h my-alinode \
   --name my-alinode \
-  toomee/alinode:3-slim
+  toomee/alinode:3
 ```
 
 启动 正式 环境容器：
@@ -126,7 +127,7 @@ $ docker run -d \
   -v $PWD:/app \
   -h my-alinode \
   --name my-alinode \
-  toomee/alinode:3-slim
+  toomee/alinode:3
 ```
 
 ## docker-compose
@@ -135,7 +136,7 @@ $ docker run -d \
 
 ```yml
 web:
-  image: toomee/alinode:3-slim
+  image: toomee/alinode:3
   restart: always
   hostname: my-alinode
   container_name: my-alinode
