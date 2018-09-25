@@ -1,6 +1,4 @@
-#!/bin/bash
-
-source $HOME/.bashrc
+#!/bin/sh
 
 ENABLE_NODE_LOG=NO node $HOME/default.config.js
 
