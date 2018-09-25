@@ -1,8 +1,8 @@
-FROM debian:8-slim
+FROM debian:8
 
 # alinode 版本和镜像
-ENV ALINODE_VERSION=3.11.8 \
-    NODE_VERSION=8.11.4 \
+ENV ALINODE_VERSION=3.12.0 \
+    NODE_VERSION=8.12.0 \
     ENABLE_NODE_LOG=YES \
     NODE_LOG_DIR=/tmp \
     ALINODE_CONFIG=alinode.config.json \
@@ -13,7 +13,7 @@ ENV ALINODE_VERSION=3.11.8 \
 # 复制 alinode npm 到 bin 目录
 COPY --from=registry.cn-hangzhou.aliyuncs.com/aliyun-node/alinode /usr/local/lib /usr/local/lib
 COPY --from=registry.cn-hangzhou.aliyuncs.com/aliyun-node/alinode /usr/local/bin /usr/local/bin
-COPY --from=registry.cn-hangzhou.aliyuncs.com/aliyun-node/alinode /bin/ping /bin
+# COPY --from=registry.cn-hangzhou.aliyuncs.com/aliyun-node/alinode /bin/ping /bin # debian:8-slim 的时候用
 
 # 只维护一个 shell
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh

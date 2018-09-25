@@ -1,7 +1,7 @@
 FROM debian:8-slim AS builder
 
 # alinode 版本和镜像
-ENV ALINODE_VERSION=3.11.8
+ENV ALINODE_VERSION=3.12.0
 ENV MIRROR_ALINODE=http://alinode.aliyun.com/dist/new-alinode
 
 # 下载 alinode
@@ -37,7 +37,7 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh \
 # 应用环境变量
 ENV HOME=/root \
     APP_DIR=/app \
-    ALINODE_VERSION=3.11.8 \
+    ALINODE_VERSION=3.12.0 \
     ENABLE_NODE_LOG=YES \
     NODE_LOG_DIR=/tmp \
     ALINODE_CONFIG=alinode.config.json \
