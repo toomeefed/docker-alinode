@@ -1,5 +1,5 @@
 web:
-  image: toomee/alinode:3-slim
+  image: toomee/alinode:3-alpine
   restart: always
   hostname: my-alinode
   container_name: my-alinode
