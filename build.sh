@@ -2,7 +2,6 @@
 
 set -e
 
-# 默认 tag 3
 tag=${1:-3}
 
 if [ ! -d $tag ]; then
@@ -16,6 +15,15 @@ echo
 echo "✨  toomee/alinode:$tag is done!"
 echo
 docker images toomee/alinode:$tag
+
+if [ $# -gt 1 ]; then
+  echo
+  for ((i=2; i<=$#; i++)); do
+    echo "create tag ${!i}"
+    docker tag toomee/alinode:$tag toomee/alinode:${!i}
+  done
+fi
+
 echo
 docker run --rm toomee/alinode:$tag sh -c 'echo "alinode v$ALINODE_VERSION" && echo "node $(node -v)" && echo "npm v$(npm -v)" && echo "yarn v$(yarn -v)" && echo "pm2 v$(pm2 -v)"'
 echo
