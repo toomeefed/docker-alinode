@@ -176,3 +176,10 @@ $ docker-compose down    # 关闭并删除
 
 `-h my-alinode` 是容器 hostname 最终会显示在 <https://node.console.aliyun.com/> 平台实例列表中。
 如果不写，会显示默认容器名，也就是随机值。
+
+## 自定义
+
+推荐自定义修改 Dockerfile 然后构建合适自己的镜像。  
+由于官网还没开源，所以 Dockerfile 也是未知的，官方镜像就像是黑匣子。  
+这个是我研究官网镜像总结出来的，是基于官网镜像直接抽取的，兼容性目前来看没啥问题。  
+有问题，欢迎反馈。
