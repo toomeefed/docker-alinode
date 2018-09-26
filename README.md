@@ -15,9 +15,21 @@ Node.js 性能平台 - Node.js Performance Platform
 
 镜像 | 镜像大小 | 基础镜像 | AliNode | Node | Dockerfile
 :-- | :-- | :-- | :-- | :-- | :--
-toomee/alinode:3 | 217MB | debian:8 | v3.12.0 | v8.12.0 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3/Dockerfile) [推荐]
+toomee/alinode:3 | 217MB | debian:8 | v3.12.0 | v8.12.0 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3/Dockerfile)
 toomee/alinode:3-slim | 159MB | debian:8-slim | v3.12.0 | v8.12.0 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3-slim/Dockerfile)
-toomee/alinode:3-alpine | 90.7MB | alpine:3.6 | v3.12.0 | v8.12.0 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3-alpine/Dockerfile)
+toomee/alinode:3-alpine | 90.9MB | alpine:3.6 | v3.12.0 | v8.12.0 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3-alpine/Dockerfile) [推荐]
+
+### 所有镜像
+
+```sh
+$ docker images toomee/alinode
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+toomee/alinode      3-alpine            e7d60ba066ec        9 minutes ago       90.9MB
+toomee/alinode      3.12-alpine         e7d60ba066ec        9 minutes ago       90.9MB
+toomee/alinode      3.12.0-alpine       e7d60ba066ec        9 minutes ago       90.9MB
+toomee/alinode      3                   b2c687008376        32 hours ago        217MB
+toomee/alinode      3-slim              baca97ca02d4        32 hours ago        159MB
+```
 
 ## 使用说明
 
@@ -35,7 +47,7 @@ toomee/alinode:3-alpine | 90.7MB | alpine:3.6 | v3.12.0 | v8.12.0 | [Dockerfile]
 ### 拉取镜像
 
 ```sh
-$ docker pull toomee/alinode:3
+$ docker pull toomee/alinode:3-alpine
 ```
 
 ### 1. 直接启动
@@ -50,7 +62,7 @@ $ docker run -d \
   -e "APP_SECRET=应用密钥" \
   -h my-alinode \
   --name my-alinode \
-  toomee/alinode:3
+  toomee/alinode:3-alpine
 ```
 
 ### 2. 基于配置启动
@@ -86,7 +98,7 @@ $ docker run -d \
   -v $PWD:/app \
   -h my-alinode \
   --name my-alinode \
-  toomee/alinode:3
+  toomee/alinode:3-alpine
 ```
 
 ### 常用命令
@@ -116,7 +128,7 @@ $ docker run -d \
   -e "ALINODE_CONFIG=alinode.config.pre.json" \
   -h my-alinode \
   --name my-alinode \
-  toomee/alinode:3
+  toomee/alinode:3-alpine
 ```
 
 启动 正式 环境容器：
@@ -127,7 +139,7 @@ $ docker run -d \
   -v $PWD:/app \
   -h my-alinode \
   --name my-alinode \
-  toomee/alinode:3
+  toomee/alinode:3-alpine
 ```
 
 ## docker-compose
@@ -136,7 +148,7 @@ $ docker run -d \
 
 ```yml
 web:
-  image: toomee/alinode:3
+  image: toomee/alinode:3-alpine
   restart: always
   hostname: my-alinode
   container_name: my-alinode
