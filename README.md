@@ -10,6 +10,8 @@ Node.js 性能平台 - Node.js Performance Platform
 [Docker Store](https://store.docker.com/community/images/toomee/alinode)
 |
 [《Node.js性能平台运行时版本和官方对应列表》](https://help.aliyun.com/knowledge_detail/60811.html)
+|
+[《官网 Dockerfile 模板》](https://github.com/toomeefed/docker-alinode/tree/master/official)
 
 ## 标签对应关系
 
