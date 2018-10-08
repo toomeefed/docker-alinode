@@ -26,12 +26,12 @@ toomee/alinode:3-alpine | 92.2MB | alpine:3.6 | v3.12.0 | v8.12.0 | [Dockerfile]
 ```sh
 $ docker images toomee/alinode
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-toomee/alinode      3-slim              7fb985bd59b2        2 hours ago         204MB
-toomee/alinode      3.12-slim           7fb985bd59b2        2 hours ago         204MB
-toomee/alinode      3.12.0-slim         7fb985bd59b2        2 hours ago         204MB
 toomee/alinode      3                   066ef0bf5dd2        2 hours ago         252MB
 toomee/alinode      3.12                066ef0bf5dd2        2 hours ago         252MB
 toomee/alinode      3.12.0              066ef0bf5dd2        2 hours ago         252MB
+toomee/alinode      3-slim              7fb985bd59b2        2 hours ago         204MB
+toomee/alinode      3.12-slim           7fb985bd59b2        2 hours ago         204MB
+toomee/alinode      3.12.0-slim         7fb985bd59b2        2 hours ago         204MB
 toomee/alinode      3-alpine            c81e5240c89f        2 hours ago         92.2MB
 toomee/alinode      3.12-alpine         c81e5240c89f        2 hours ago         92.2MB
 toomee/alinode      3.12.0-alpine       c81e5240c89f        2 hours ago         92.2MB
