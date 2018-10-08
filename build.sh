@@ -2,26 +2,48 @@
 
 set -e
 
+# 输入参数
 tag=${1:-3}
 
-if [ ! -d $tag ]; then
+# 版本
+version=${tag/-*/}
+# 版本标签
+tagname=${tag/*-/}
+
+# 对应目录
+dir="$version/$tagname"
+
+# 如果没标签，默认 jessie 版本
+if [ "$version" = "$tagname" ]; then
+  dir="$version/jessie"
+fi
+
+# 判断目录是否存在
+if [ ! -d $dir ]; then
   echo "no such tag: $tag"
   exit -1
 fi
 
-docker build -f $tag/Dockerfile -t toomee/alinode:$tag context
+# 构建镜像
+docker build -f $dir/Dockerfile -t toomee/alinode:$tag context
 
 echo
-echo "✨  toomee/alinode:$tag is done!"
+echo "✨ toomee/alinode:$tag is done!"
 echo
-docker images toomee/alinode:$tag
 
 if [ $# -gt 1 ]; then
-  echo
   for ((i=2; i<=$#; i++)); do
-    echo "create tag ${!i}"
+    echo "Create tag $tag -> ${!i}"
     docker tag toomee/alinode:$tag toomee/alinode:${!i}
   done
+fi
+
+echo
+
+if [ "$version" = "$tagname" ]; then
+  docker images toomee/alinode:$tag*
+else
+  docker images toomee/alinode:$version*-$tagname
 fi
 
 echo
