@@ -19,7 +19,7 @@ Node.js 性能平台 - Node.js Performance Platform
 :-- | :-- | :-- | :-- | :-- | :--
 toomee/alinode:3 | 252MB | debian:jessie | v3.12.0 | v8.12.0 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3/jessie/Dockerfile)
 toomee/alinode:3-slim | 204MB | debian:jessie-slim | v3.12.0 | v8.12.0 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3/slim/Dockerfile)
-toomee/alinode:3-alpine | 92.2MB | alpine:3.6 | v3.12.0 | v8.12.0 | [Dockerfile](/Users/cik/GitRoot/tm/github/docker-alinode/3/alpine/Dockerfile)
+toomee/alinode:3-alpine | 92.2MB | alpine:3.6 | v3.12.0 | v8.12.0 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3/alpine/Dockerfile)
 
 ### 所有镜像
 
