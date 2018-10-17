@@ -1,6 +1,6 @@
 FROM alpine:3.6
 
-# alinode 版本和镜像
+# 环境变量
 ENV ALINODE_VERSION=3.12.0 \
     NODE_VERSION=8.12.0 \
     ENABLE_NODE_LOG=YES \
@@ -29,6 +29,7 @@ RUN addgroup -g 1000 node \
 COPY default.config.js /root
 COPY start-agenthub.sh /
 
+# 入口脚本
 ENTRYPOINT ["/start-agenthub.sh"]
 
 # 工作目录
