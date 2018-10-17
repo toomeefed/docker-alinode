@@ -1,6 +1,6 @@
 FROM debian:jessie
 
-# alinode 版本和镜像
+# 环境变量
 ENV ALINODE_VERSION=3.12.0 \
     NODE_VERSION=8.12.0 \
     ENABLE_NODE_LOG=YES \
@@ -9,9 +9,6 @@ ENV ALINODE_VERSION=3.12.0 \
     NODE_ENV=production \
     HOME=/root \
     APP_DIR=/app
-
-# 只维护一个 shell
-# RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 # 添加用户和组
 RUN groupadd --gid 1000 node \
@@ -39,6 +36,7 @@ RUN set -x \
 COPY default.config.js /root
 COPY start-agenthub.sh /
 
+# 入口脚本
 ENTRYPOINT ["/start-agenthub.sh"]
 
 # 工作目录
