@@ -15,5 +15,7 @@
 [3/Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3/jessie/Dockerfile) 对应 `3.Dockerfile` 版本。  
 [3-slim/Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3/slim/Dockerfile) 对应 `3-slim.Dockerfile` 版本。  
 [3-alpine/Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3/alpine/Dockerfile) 对应 `3-alpine.Dockerfile` 版本。
+[4/Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/4/jessie/Dockerfile) 对应 `4.Dockerfile` 版本。  
+[4-slim/Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/4/slim/Dockerfile) 对应 `4-slim.Dockerfile` 版本。  
 
 根据自己的需求魔改吧。
