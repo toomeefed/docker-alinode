@@ -20,10 +20,12 @@ RUN addgroup -g 1000 node \
   && echo "http://mirrors.aliyun.com/alpine/v3.6/community" >> /etc/apk/repositories \
   && apk add --no-cache libstdc++ ca-certificates curl wget \
   && rm -rf /usr/local/bin/yarn* \
+  && ln -s /usr/local/bin/node /usr/local/bin/nodejs \
   && npm set registry https://registry.npm.taobao.org \
   && npm set disturl https://npm.taobao.org/dist \
   && npm i -g yarn pm2 \
-  && npm cache clean --force
+  && npm cache clean --force \
+  && rm -rf /tmp/*
 
 # 初始化脚本
 COPY default.config.js /root

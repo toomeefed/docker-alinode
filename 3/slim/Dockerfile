@@ -22,15 +22,17 @@ RUN set -x \
   && echo "deb-src http://mirrors.aliyun.com/debian/ jessie-proposed-updates main non-free contrib" >> /etc/apt/sources.list \
   && apt-get update && apt-get install -y iputils-ping ca-certificates curl wget --no-install-recommends \
   && rm -rf /var/lib/apt/lists/* \
-  && curl -SLO "http://alinode.aliyun.com/dist/new-alinode/v$ALINODE_VERSION/alinode-v$ALINODE_VERSION-linux-x64.tar.gz" \
-  && curl -SLO "http://alinode.aliyun.com/dist/new-alinode/v$ALINODE_VERSION/SHASUMS256.txt" \
+  && curl -fsSLO --compressed "http://alinode.aliyun.com/dist/new-alinode/v$ALINODE_VERSION/alinode-v$ALINODE_VERSION-linux-x64.tar.gz" \
+  && curl -fsSLO --compressed "http://alinode.aliyun.com/dist/new-alinode/v$ALINODE_VERSION/SHASUMS256.txt" \
   && grep " alinode-v$ALINODE_VERSION-linux-x64.tar.gz" SHASUMS256.txt | sha256sum -c - \
   && tar -zxvf "alinode-v$ALINODE_VERSION-linux-x64.tar.gz" -C /usr/local --strip-components=1 --no-same-owner \
   && rm "alinode-v$ALINODE_VERSION-linux-x64.tar.gz" SHASUMS256.txt \
+  && ln -s /usr/local/bin/node /usr/local/bin/nodejs \
   && npm set registry https://registry.npm.taobao.org \
   && npm set disturl https://npm.taobao.org/dist \
   && npm i -g yarn pm2 @alicloud/agenthub \
-  && npm cache clean --force
+  && npm cache clean --force \
+  && rm -rf /tmp/*
 
 # 初始化脚本
 COPY default.config.js /root
