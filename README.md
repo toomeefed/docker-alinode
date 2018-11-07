@@ -15,26 +15,35 @@ Node.js 性能平台 - Node.js Performance Platform
 
 ## 标签对应关系
 
-镜像 | 镜像大小 | 基础镜像 | AliNode | Node | Dockerfile
-:-- | :-- | :-- | :-- | :-- | :--
-toomee/alinode:3 | 252MB | debian:jessie | v3.12.0 | v8.12.0 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3/jessie/Dockerfile)
-toomee/alinode:3-slim | 204MB | debian:jessie-slim | v3.12.0 | v8.12.0 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3/slim/Dockerfile)
-toomee/alinode:3-alpine | 92.2MB | alpine:3.6 | v3.12.0 | v8.12.0 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3/alpine/Dockerfile)
+镜像 | 基础镜像 | AliNode | Node | Dockerfile
+:-- | :-- | :-- | :-- | :--
+toomee/alinode:3 | debian:jessie | v3.12.0 | v8.12.0 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3/jessie/Dockerfile)
+toomee/alinode:3-slim | debian:jessie-slim | v3.12.0 | v8.12.0 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3/slim/Dockerfile)
+toomee/alinode:3-alpine | alpine:3.6 | v3.12.0 | v8.12.0 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3/alpine/Dockerfile)
+toomee/alinode:3 | debian:jessie | v4.5.0 | v10.13.0 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/4/jessie/Dockerfile)
+toomee/alinode:3 | debian:jessie-slim | v4.5.0 | v10.13.0 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/4/slim/Dockerfile)
+
 
 ### 所有镜像
 
 ```sh
 $ docker images toomee/alinode
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-toomee/alinode      3                   066ef0bf5dd2        2 hours ago         252MB
-toomee/alinode      3.12                066ef0bf5dd2        2 hours ago         252MB
-toomee/alinode      3.12.0              066ef0bf5dd2        2 hours ago         252MB
-toomee/alinode      3-slim              7fb985bd59b2        2 hours ago         204MB
-toomee/alinode      3.12-slim           7fb985bd59b2        2 hours ago         204MB
-toomee/alinode      3.12.0-slim         7fb985bd59b2        2 hours ago         204MB
-toomee/alinode      3-alpine            c81e5240c89f        2 hours ago         92.2MB
-toomee/alinode      3.12-alpine         c81e5240c89f        2 hours ago         92.2MB
-toomee/alinode      3.12.0-alpine       c81e5240c89f        2 hours ago         92.2MB
+toomee/alinode      4                   aef0e26618ae        5 seconds ago       259MB
+toomee/alinode      4.5                 aef0e26618ae        5 seconds ago       259MB
+toomee/alinode      4.5.0               aef0e26618ae        5 seconds ago       259MB
+toomee/alinode      4-slim              b70677dcf062        2 minutes ago       211MB
+toomee/alinode      4.5-slim            b70677dcf062        2 minutes ago       211MB
+toomee/alinode      4.5.0-slim          b70677dcf062        2 minutes ago       211MB
+toomee/alinode      3                   ccc2438970ac        3 minutes ago       254MB
+toomee/alinode      3.12                ccc2438970ac        3 minutes ago       254MB
+toomee/alinode      3.12.0              ccc2438970ac        3 minutes ago       254MB
+toomee/alinode      3-slim              ecdefe32242d        6 minutes ago       207MB
+toomee/alinode      3.12-slim           ecdefe32242d        6 minutes ago       207MB
+toomee/alinode      3.12.0-slim         ecdefe32242d        6 minutes ago       207MB
+toomee/alinode      3-alpine            e8b918dcd74a        9 minutes ago       94.7MB
+toomee/alinode      3.12-alpine         e8b918dcd74a        9 minutes ago       94.7MB
+toomee/alinode      3.12.0-alpine       e8b918dcd74a        9 minutes ago       94.7MB
 ```
 
 ## 使用说明
