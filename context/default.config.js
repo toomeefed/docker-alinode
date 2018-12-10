@@ -1,50 +1,33 @@
 const fs = require('fs');
 
-const {
-  APP_ID,
-  APP_SECRET,
-  NODE_LOG_DIR,
-  HOME,
-  APP_DIR,
-  ALINODE_CONFIG,
-} = process.env;
-
 const defaults = {
   // server: 'wss://agentserver.node.aliyun.com:8080',
-  appid: APP_ID,
-  secret: APP_SECRET,
-  // heartbeatInterval: 60,
-  // reconnectDelay: 10,
-  // reportInterval: 60,
-  logdir: NODE_LOG_DIR,
+  heartbeatInterval: 60,
+  reconnectDelay: 10,
+  reportInterval: 60,
+  logdir: '/tmp',
   error_log: [],
   packages: [],
 };
 
-if (fs.existsSync(`${APP_DIR}/package.json`)) {
-  defaults.packages.push(`${APP_DIR}/package.json`);
-}
-
 let custom = {};
 
 // load /app/alinode.config.json
-if (fs.existsSync(`${APP_DIR}/${ALINODE_CONFIG}`)) {
-  custom = require(`${APP_DIR}/${ALINODE_CONFIG}`);
+if (fs.existsSync(`${process.env.APP_DIR}/${process.env.ALINODE_CONFIG}`)) {
+  custom = require(`${process.env.APP_DIR}/${process.env.ALINODE_CONFIG}`);
 }
 
-if (!custom.appid && defaults.appid) {
-  delete custom.appid;
-}
-
-if (!custom.secret && defaults.secret) {
-  delete custom.secret;
+if (fs.existsSync(`${process.env.APP_DIR}/package.json`)) {
+  defaults.packages.push(`${process.env.APP_DIR}/package.json`);
 }
 
 const config = Object.assign(defaults, custom);
 
-if (config.appid !== undefined && config.secret !== undefined) {
-  if (config.logdir === undefined) {
-    config.logdir = '/tmp';
-  }
-  fs.writeFileSync(`${HOME}/agenthub-running.json`, JSON.stringify(config, null, 2));
+config.appid = config.appid || process.env.APP_ID;
+config.secret = config.secret || process.env.APP_SECRET;
+config.logdir = config.logdir || process.env.NODE_LOG_DIR || '/tmp';
+
+if (config.appid && config.secret) {
+  const runningCfg = `${process.env.HOME}/agenthub-running.json`;
+  fs.writeFileSync(runningCfg, JSON.stringify(config, null, 2));
 }
