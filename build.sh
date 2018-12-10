@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# 例子
+# sh build.sh 3-alpine 3.13-alpine 3.13.0-alpine
+
 set -e
 
 # 输入参数
