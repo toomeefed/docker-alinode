@@ -2,7 +2,7 @@ FROM alpine:3.8
 
 # 环境变量
 ENV ALINODE_VERSION=4.7.0 \
-    NODE_VERSION=10.15.0 \
+    NODE_VERSION=10.15.3 \
     ENABLE_NODE_LOG=YES \
     NODE_LOG_DIR=/tmp \
     ALINODE_CONFIG=alinode.config.json \
@@ -11,7 +11,7 @@ ENV ALINODE_VERSION=4.7.0 \
     APP_DIR=/app
 
 # 从官网镜像中复制 alinode 包含了 agenthub 无需安装
-COPY --from=registry.cn-hangzhou.aliyuncs.com/aliyun-node/alinode:3-alpine /usr/local /usr/local
+COPY --from=registry.cn-hangzhou.aliyuncs.com/aliyun-node/alinode:4-alpine /usr/local /usr/local
 
 # 添加账号，安装 依赖，运维工具，yarn pm2
 RUN addgroup -g 1000 node \
