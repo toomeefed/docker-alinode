@@ -17,37 +17,45 @@ Node.js 性能平台 - Node.js Performance Platform
 
 镜像 | 基础镜像 | AliNode | Node | Dockerfile
 :-- | :-- | :-- | :-- | :--
-toomee/alinode:3 | debian:jessie | v3.14.0 | v8.15.0 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3/jessie/Dockerfile)
-toomee/alinode:3-slim | debian:jessie-slim | v3.14.0 | v8.15.0 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3/slim/Dockerfile)
-toomee/alinode:3-alpine | alpine:3.8 | v3.14.0 | v8.15.0 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3/alpine/Dockerfile)
-toomee/alinode:4 | debian:jessie | v4.7.0 | v10.15.0 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/4/jessie/Dockerfile)
-toomee/alinode:4-slim | debian:jessie-slim | v4.7.0 | v10.15.0 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/4/slim/Dockerfile)
-toomee/alinode:4-alpine | alpine:3.8 | v4.7.0 | v10.15.0 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/4/alpine/Dockerfile)
+toomee/alinode:3 | debian:jessie | v3.15.0 | v8.16.0 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3/jessie/Dockerfile)
+toomee/alinode:3-slim | debian:jessie-slim | v3.15.0 | v8.16.0 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3/slim/Dockerfile)
+toomee/alinode:3-alpine | alpine:3.8 | v3.14.1 | v8.15.1 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/3/alpine/Dockerfile)
+toomee/alinode:4 | debian:jessie | v4.8.0 | v10.16.0 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/4/jessie/Dockerfile)
+toomee/alinode:4-slim | debian:jessie-slim | v4.8.0 | v10.16.0 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/4/slim/Dockerfile)
+toomee/alinode:4-alpine | alpine:3.8 | v4.7.0 | v10.15.3 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/4/alpine/Dockerfile)
+toomee/alinode:5 | debian:jessie | v5.6.0 | v12.6.0 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/5/jessie/Dockerfile)
+toomee/alinode:5-slim | debian:jessie-slim | v5.6.0 | v12.6.0 | [Dockerfile](https://github.com/toomeefed/docker-alinode/blob/master/5/slim/Dockerfile)
 
 
 ### 所有镜像
 
 ```sh
 $ docker images toomee/alinode
-REPOSITORY        TAG              IMAGE ID          CREATED            SIZE
-toomee/alinode    4                7fabe813c56c      3 minutes ago      262MB
-toomee/alinode    4.7              7fabe813c56c      3 minutes ago      262MB
-toomee/alinode    4.7.0            7fabe813c56c      3 minutes ago      262MB
-toomee/alinode    4-slim           0455e13dfa60      4 minutes ago      215MB
-toomee/alinode    4.7-slim         0455e13dfa60      4 minutes ago      215MB
-toomee/alinode    4.7.0-slim       0455e13dfa60      4 minutes ago      215MB
-toomee/alinode    4-alpine         a2cdc7c47f86      5 minutes ago      98.9MB
-toomee/alinode    4.7-alpine       a2cdc7c47f86      5 minutes ago      98.9MB
-toomee/alinode    4.7.0-alpine     a2cdc7c47f86      5 minutes ago      98.9MB
-toomee/alinode    3                cb9d92188fe3      7 minutes ago      258MB
-toomee/alinode    3.14             cb9d92188fe3      7 minutes ago      258MB
-toomee/alinode    3.14.0           cb9d92188fe3      7 minutes ago      258MB
-toomee/alinode    3-slim           d1a60967eed2      8 minutes ago      210MB
-toomee/alinode    3.14-slim        d1a60967eed2      8 minutes ago      210MB
-toomee/alinode    3.14.0-slim      d1a60967eed2      8 minutes ago      210MB
-toomee/alinode    3-alpine         c8be3e5ad548      9 minutes ago      98.9MB
-toomee/alinode    3.14-alpine      c8be3e5ad548      9 minutes ago      98.9MB
-toomee/alinode    3.14.0-alpine    c8be3e5ad548      9 minutes ago      98.9MB
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+toomee/alinode      5-slim              478d084f54d8        4 minutes ago       228MB
+toomee/alinode      5.6-slim            478d084f54d8        4 minutes ago       228MB
+toomee/alinode      5.6.0-slim          478d084f54d8        4 minutes ago       228MB
+toomee/alinode      5                   8e4ebea8314f        6 minutes ago       275MB
+toomee/alinode      5.6                 8e4ebea8314f        6 minutes ago       275MB
+toomee/alinode      5.6.0               8e4ebea8314f        6 minutes ago       275MB
+toomee/alinode      4-alpine            b60e826e8854        7 minutes ago       106MB
+toomee/alinode      4.7-alpine          b60e826e8854        7 minutes ago       106MB
+toomee/alinode      4.7.0-alpine        b60e826e8854        7 minutes ago       106MB
+toomee/alinode      4-slim              403c69f5e02b        8 minutes ago       225MB
+toomee/alinode      4.8-slim            403c69f5e02b        8 minutes ago       225MB
+toomee/alinode      4.8.0-slim          403c69f5e02b        8 minutes ago       225MB
+toomee/alinode      4                   dd8497da944f        9 minutes ago       272MB
+toomee/alinode      4.8                 dd8497da944f        9 minutes ago       272MB
+toomee/alinode      4.8.0               dd8497da944f        9 minutes ago       272MB
+toomee/alinode      3-alpine            8f1d88e5fdcf        10 minutes ago      101MB
+toomee/alinode      3.14-alpine         8f1d88e5fdcf        10 minutes ago      101MB
+toomee/alinode      3.14.1-alpine       8f1d88e5fdcf        10 minutes ago      101MB
+toomee/alinode      3-slim              cdcc791e5b8b        11 minutes ago      216MB
+toomee/alinode      3.15-slim           cdcc791e5b8b        11 minutes ago      216MB
+toomee/alinode      3.15.0-slim         cdcc791e5b8b        11 minutes ago      216MB
+toomee/alinode      3                   3a04e8b4b73f        12 minutes ago      264MB
+toomee/alinode      3.15                3a04e8b4b73f        12 minutes ago      264MB
+toomee/alinode      3.15.0              3a04e8b4b73f        12 minutes ago      264MB
 ```
 
 ## 使用说明
@@ -66,7 +74,7 @@ toomee/alinode    3.14.0-alpine    c8be3e5ad548      9 minutes ago      98.9MB
 ### 拉取镜像
 
 ```sh
-$ docker pull toomee/alinode:3-alpine
+$ docker pull toomee/alinode:5
 ```
 
 ### 1. 直接启动
@@ -81,7 +89,7 @@ $ docker run -d \
   -e "APP_SECRET=应用密钥" \
   -h my-alinode \
   --name my-alinode \
-  toomee/alinode:3-alpine
+  toomee/alinode:5
 ```
 
 ### 2. 基于配置启动
@@ -117,7 +125,7 @@ $ docker run -d \
   -v $PWD:/app \
   -h my-alinode \
   --name my-alinode \
-  toomee/alinode:3-alpine
+  toomee/alinode:5
 ```
 
 ### 常用命令
@@ -147,7 +155,7 @@ $ docker run -d \
   -e "ALINODE_CONFIG=alinode.config.pre.json" \
   -h my-alinode \
   --name my-alinode \
-  toomee/alinode:3-alpine
+  toomee/alinode:5
 ```
 
 启动 正式 环境容器：
@@ -158,7 +166,7 @@ $ docker run -d \
   -v $PWD:/app \
   -h my-alinode \
   --name my-alinode \
-  toomee/alinode:3-alpine
+  toomee/alinode:5
 ```
 
 ## docker-compose
@@ -167,7 +175,7 @@ $ docker run -d \
 
 ```yml
 web:
-  image: toomee/alinode:3-alpine
+  image: toomee/alinode:5
   restart: always
   hostname: my-alinode
   container_name: my-alinode
