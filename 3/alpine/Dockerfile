@@ -1,8 +1,8 @@
 FROM alpine:3.8
 
 # 环境变量
-ENV ALINODE_VERSION=3.14.0 \
-    NODE_VERSION=8.15.0 \
+ENV ALINODE_VERSION=3.14.1 \
+    NODE_VERSION=8.15.1 \
     ENABLE_NODE_LOG=YES \
     NODE_LOG_DIR=/tmp \
     ALINODE_CONFIG=alinode.config.json \

@@ -1,8 +1,8 @@
 FROM debian:jessie-slim
 
 # 环境变量
-ENV ALINODE_VERSION=3.14.0 \
-    NODE_VERSION=8.15.0 \
+ENV ALINODE_VERSION=3.15.0 \
+    NODE_VERSION=8.16.0 \
     ARCH=x64 \
     ENABLE_NODE_LOG=YES \
     NODE_LOG_DIR=/tmp \
@@ -17,10 +17,9 @@ RUN groupadd --gid 1000 node \
 
 # 安装 运维工具，alinode，yarn pm2 agenthub
 RUN set -x \
-  && echo "deb http://mirrors.aliyun.com/debian/ jessie main non-free contrib" > /etc/apt/sources.list \
-  && echo "deb http://mirrors.aliyun.com/debian/ jessie-proposed-updates main non-free contrib" >> /etc/apt/sources.list \
-  && echo "deb-src http://mirrors.aliyun.com/debian/ jessie main non-free contrib" >> /etc/apt/sources.list \
-  && echo "deb-src http://mirrors.aliyun.com/debian/ jessie-proposed-updates main non-free contrib" >> /etc/apt/sources.list \
+  && echo "deb http://mirrors.aliyun.com/debian jessie main" > /etc/apt/sources.list \
+  && echo "deb http://mirrors.aliyun.com/debian-security jessie/updates main" >> /etc/apt/sources.list \
+  && echo "deb http://mirrors.aliyun.com/debian jessie-updates main" >> /etc/apt/sources.list \
   && apt-get update && apt-get install -y iputils-ping ca-certificates curl wget --no-install-recommends \
   && rm -rf /var/lib/apt/lists/* \
   && curl -fsSLO --compressed "https://npm.taobao.org/mirrors/alinode/v$ALINODE_VERSION/alinode-v$ALINODE_VERSION-linux-$ARCH.tar.gz" \
