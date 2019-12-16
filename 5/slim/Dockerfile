@@ -1,8 +1,8 @@
 FROM debian:jessie-slim
 
 # 环境变量
-ENV ALINODE_VERSION=5.6.0 \
-    NODE_VERSION=12.6.0 \
+ENV ALINODE_VERSION=5.13.0 \
+    NODE_VERSION=12.13.0 \
     ARCH=x64 \
     ENABLE_NODE_LOG=YES \
     NODE_LOG_DIR=/tmp \
